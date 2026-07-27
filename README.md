@@ -4,4 +4,4 @@
 ![Access](https://img.shields.io/badge/Access-Team%20Only-orange?style=flat-square)
 ![Platform](https://img.shields.io/badge/Platform-Web%20App-9cf?style=flat-square)
 
-Selamat datang di proyek WebGIS Kerban! 🚀 
+Selamat datang di proyek WebGIS Kelurahan Bumijo! 
