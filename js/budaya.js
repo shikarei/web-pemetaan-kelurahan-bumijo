@@ -23,7 +23,7 @@
                 [lat, lng],
                 {
                     pane: 'pointPane',
-                    icon: createBumijoIcon('hexagon', '#8B5CF6', 'bi-bank')
+                    icon: createBumijoIcon('rounded-square', '#8B5CF6', 'bi-bank')
                 }
             ).bindPopup(`
                 <div class="budaya-popup">

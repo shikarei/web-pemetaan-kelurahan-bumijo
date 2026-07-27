@@ -608,6 +608,37 @@
         animation: pulseSwatch 0.5s ease;
     }
 
+    /* =====================================================
+        LEGEND SWATCH — versi mini marker ikon
+        Dipakai bareng ".legend-swatch" (bukan pengganti) supaya
+        animasi pulseSwatch() di ui.js tetap jalan seperti biasa.
+        Bentuknya menyamai ".bumijo-marker" di peta, cuma diperkecil
+        supaya pas di baris legenda.
+    ===================================================== */
+
+    .legend-swatch.icon-marker {
+        width: 18px;
+        height: 18px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--marker-color, var(--teal));
+        border: 1.5px solid #ffffff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+        color: #ffffff;
+        font-size: 9px;
+        line-height: 1;
+    }
+
+    .legend-swatch.icon-marker.circle {
+        border-radius: 50%;
+    }
+
+    .legend-swatch.icon-marker i {
+        pointer-events: none;
+    }
+
     @keyframes pulseSwatch {
         0% {
             transform: scale(1);
@@ -868,16 +899,16 @@
 ===================================================== */
 
     .bumijo-marker {
-        width: 34px;
-        height: 34px;
+        width: 24px;
+        height: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: var(--marker-color, var(--teal));
-        border: 2.5px solid #ffffff;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        border: 2px solid #ffffff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
         color: #ffffff;
-        font-size: 16px;
+        font-size: 11px;
         line-height: 1;
         transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
         cursor: pointer;
@@ -898,9 +929,9 @@
         border-radius: 50%;
     }
 
-    /* Rounded Square — TPS, UMKM Barang & Jasa */
+    /* Rounded Square — TPS, Ruang Aktivitas Budaya, UMKM Barang & Jasa */
     .bumijo-marker--rounded-square {
-        border-radius: 9px;
+        border-radius: 7px;
     }
 
     /* Hexagon — Ruang Aktivitas Budaya.

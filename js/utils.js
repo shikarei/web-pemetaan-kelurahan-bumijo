@@ -67,8 +67,8 @@ function createBumijoIcon(shape, color, icon) {
                 <i class="bi ${icon}"></i>
             </div>
         `,
-        iconSize: [34, 34],
-        iconAnchor: [17, 17],
-        popupAnchor: [0, -18]
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+        popupAnchor: [0, -13]
     });
 }
