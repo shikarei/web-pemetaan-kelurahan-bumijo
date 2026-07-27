@@ -1,0 +1,21 @@
+{
+"type": "FeatureCollection",
+"name": "TitikLayananSampah_4326",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Jantra" }, "geometry": { "type": "Point", "coordinates": [ 110.35894834526438, -7.783552879959982 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Berseri 35" }, "geometry": { "type": "Point", "coordinates": [ 110.359830001801072, -7.784576090095459 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Lestari" }, "geometry": { "type": "Point", "coordinates": [ 110.356459277715246, -7.787686875377414 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Pusat Daur Ulang Bumijo" }, "geometry": { "type": "Point", "coordinates": [ 110.358736901928381, -7.784602517175121 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Basuki Migunani" }, "geometry": { "type": "Point", "coordinates": [ 110.356658747662522, -7.784635557964829 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Guyub Warga" }, "geometry": { "type": "Point", "coordinates": [ 110.35826068614611, -7.781847558623588 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Linuih RW 03" }, "geometry": { "type": "Point", "coordinates": [ 110.358070860539911, -7.781576606533866 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Peleman RW 04" }, "geometry": { "type": "Point", "coordinates": [ 110.359212671964244, -7.78155610493039 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Mulya Arta 18" }, "geometry": { "type": "Point", "coordinates": [ 110.359461800568639, -7.781131371082942 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Sorwo RW 6\r\n" }, "geometry": { "type": "Point", "coordinates": [ 110.362690612511997, -7.784136482174452 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Makmur Barokah" }, "geometry": { "type": "Point", "coordinates": [ 110.362106969079079, -7.785411631618368 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Berseri 33" }, "geometry": { "type": "Point", "coordinates": [ 110.361454606950645, -7.78787561348283 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Winongo" }, "geometry": { "type": "Point", "coordinates": [ 110.357010978501123, -7.785875107370638 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Layanan": "Bank Sampah Rezeki RW 10" }, "geometry": { "type": "Point", "coordinates": [ 110.357327730945457, -7.786820930537812 ] } }
+]
+}

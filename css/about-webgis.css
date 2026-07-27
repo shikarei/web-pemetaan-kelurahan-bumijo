@@ -1,0 +1,1205 @@
+/* =========================================================================
+    ABOUT WEBGIS — Kelurahan Bumijo
+    Palet & token disamakan dengan css/map-style.css (WebGIS utama) supaya
+    identitas visual konsisten, tetapi file ini berdiri sendiri sehingga
+    tidak memengaruhi halaman peta maupun halaman Profil Lokal.
+========================================================================= */
+
+:root {
+    --dark-purple: #280047;
+    --purple: #430076;
+    --purple-slightlydark: #35005e;
+    --purple-light: #9d00b6;
+    --navy: #001424;
+    --teal: #008ba0;
+    --teal-light: #30c6da;
+    --teal-pale: #c2f9ff;
+    --spearmint: #00ffb3;
+
+    --white: #ffffff;
+    --peach: #ffecd1;
+    --peach-mid: #e0b97e;
+    --amber: #ff891c;
+    --amber-light: #ffb56b;
+    --chocolate: #78290f;
+    --chocolate-light: #b3491f;
+    --line: rgba(255, 236, 209, 0.1);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--white);
+    background: var(--purple-slightlydark);
+}
+
+h1,
+h2,
+h3,
+.ab-display {
+    font-family: 'Fraunces', serif;
+    margin: 0;
+}
+
+/* =====================================================
+    TOPBAR
+===================================================== */
+
+.ab-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    padding: 0 1.2rem;
+    background: var(--dark-purple);
+    border-bottom: 1px solid var(--line);
+}
+
+.ab-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.ab-display {
+    font-size: 1.5rem;
+    letter-spacing: 0.01em;
+}
+
+.ab-brand small {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--spearmint);
+}
+
+.ab-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    border: none;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ab-back-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 255, 125, 0.35);
+}
+
+/* =====================================================
+    MAIN
+===================================================== */
+
+.ab-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.4rem 3rem;
+}
+
+/* =====================================================
+    HERO
+===================================================== */
+
+.ab-hero {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 0 2.6rem;
+}
+
+.ab-hero-logo {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 1.1rem;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    font-size: 2rem;
+    box-shadow: 0 10px 26px rgba(0, 255, 125, 0.32);
+}
+
+.ab-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(0, 255, 125, 0.12);
+    border: 1px dashed var(--spearmint);
+    color: var(--amber-light);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+}
+
+.ab-hero h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.ab-hero-subtitle {
+    font-size: 1rem;
+    color: var(--teal-pale);
+    font-weight: 600;
+    margin: 0 0 1rem;
+}
+
+.ab-hero-desc {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: rgba(255, 236, 209, 0.72);
+    margin: 0 0 1.6rem;
+}
+
+.ab-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.65rem 1.3rem;
+    border-radius: 999px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ab-hero-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 255, 125, 0.35);
+}
+
+/* =====================================================
+    SECTION HEAD
+===================================================== */
+
+.ab-section {
+    margin-bottom: 3rem;
+}
+
+.ab-section-head {
+    margin-bottom: 1.4rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.ab-section-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.25rem;
+    color: var(--peach);
+}
+
+.ab-section-head h2 i {
+    color: var(--spearmint);
+    font-size: 1.05rem;
+}
+
+/* =====================================================
+    REVEAL ON SCROLL — utilitas animasi masuk
+    Dipicu oleh IntersectionObserver di js/about-webgis.js
+    (menambahkan class "is-visible"). Dipakai oleh panel
+    Latar Belakang, kartu Tujuan/Manfaat, dan item timeline
+    Ruang Lingkup Pemetaan.
+===================================================== */
+
+.ab-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ab-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================================================
+    LATAR BELAKANG — panel penuh lebar
+===================================================== */
+
+.ab-background-panel {
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--spearmint);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+.ab-background-panel h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 1rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    color: var(--amber-light);
+    margin-bottom: 0.9rem;
+}
+
+.ab-background-panel h3 i {
+    color: var(--spearmint);
+}
+
+.ab-background-panel p {
+    font-size: 0.86rem;
+    line-height: 1.75;
+    color: rgba(255, 236, 209, 0.72);
+    margin: 0 0 0.9rem;
+}
+
+.ab-background-panel p:last-child {
+    margin-bottom: 0;
+}
+
+/* =====================================================
+    DIVIDER — pemisah dekoratif antara Latar Belakang
+    dan grid Tujuan/Manfaat
+===================================================== */
+
+.ab-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 1.8rem 0;
+}
+
+.ab-divider::before,
+.ab-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+}
+
+.ab-divider-dot {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    font-size: 0.95rem;
+    box-shadow: 0 6px 16px rgba(0, 255, 179, 0.35);
+}
+
+/* =====================================================
+    DUAL GRID — Tujuan Pengembangan & Manfaat WebGIS
+===================================================== */
+
+.ab-dual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.ab-dual-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.2rem 1.1rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ab-dual-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+
+.ab-dual-card[data-accent="amber"]::before {
+    background: var(--amber);
+}
+
+.ab-dual-card[data-accent="teal"]::before {
+    background: var(--teal-light);
+}
+
+.ab-dual-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.ab-dual-card:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.ab-dual-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+    border-color: var(--spearmint);
+}
+
+.ab-dual-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    color: var(--amber-light);
+    margin-bottom: 0.6rem;
+}
+
+.ab-dual-card h3 i {
+    color: var(--spearmint);
+}
+
+.ab-dual-card p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255, 236, 209, 0.68);
+    margin: 0 0 0.7rem;
+}
+
+.ab-dual-card ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ab-dual-card ul li {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: rgba(255, 236, 209, 0.68);
+}
+
+/* =====================================================
+    INFO GRID (cadangan, tidak lagi dipakai Sumber Data
+    setelah direstrukturisasi menjadi SOURCE GRID di bawah —
+    tetap dipertahankan agar tidak menghapus style yang ada)
+===================================================== */
+
+.ab-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.ab-info-item {
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ab-info-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+    border-color: var(--spearmint);
+}
+
+.ab-info-item h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    color: var(--amber-light);
+    margin-bottom: 0.5rem;
+}
+
+.ab-info-item h3 i {
+    color: var(--spearmint);
+}
+
+.ab-info-item p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255, 236, 209, 0.68);
+    margin: 0;
+}
+
+/* =====================================================
+    SOURCE GRID — Sumber Data
+    Setiap kartu berisi daftar baris data ala "chip list" dengan
+    ikon/​swatch, label, dan nilai (tanggal atau sumber), disertai
+    badge jumlah data dan strip aksen di bagian atas kartu.
+    Reveal-nya memakai utilitas ".ab-reveal" yang sudah ada
+    (di-observe otomatis oleh initRevealElements() di
+    js/about-webgis.js) — tidak perlu skrip tambahan apa pun.
+===================================================== */
+
+.ab-source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.1rem;
+}
+
+.ab-source-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.3rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ab-source-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+}
+
+.ab-source-card[data-accent="amber"]::before {
+    background: var(--amber);
+}
+
+.ab-source-card[data-accent="teal"]::before {
+    background: var(--teal-light);
+}
+
+.ab-source-card[data-accent="pale"]::before {
+    background: var(--teal-pale);
+}
+
+.ab-source-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.ab-source-card:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.ab-source-card:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+.ab-source-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+    border-color: var(--spearmint);
+}
+
+.ab-source-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px dashed var(--line);
+}
+
+.ab-source-card-head h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    color: var(--amber-light);
+}
+
+.ab-source-card-head h3 i {
+    color: var(--spearmint);
+}
+
+.ab-source-count {
+    flex-shrink: 0;
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 0.22rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: transform 0.2s ease;
+}
+
+.ab-source-card:hover .ab-source-count {
+    transform: scale(1.08);
+}
+
+.ab-source-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.ab-source-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 0.55rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ab-source-row:hover {
+    background: rgba(255, 236, 209, 0.06);
+    transform: translateX(4px);
+}
+
+.ab-source-row-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 255, 179, 0.12);
+    color: var(--spearmint);
+    font-size: 0.72rem;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ab-source-row:hover .ab-source-row-icon {
+    background: var(--spearmint);
+    color: var(--dark-purple);
+}
+
+.ab-source-swatch {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.ab-source-row:hover .ab-source-swatch {
+    transform: scale(1.15);
+}
+
+.ab-source-row-label {
+    flex: 1;
+    color: rgba(255, 236, 209, 0.75);
+    line-height: 1.4;
+}
+
+.ab-source-row-value {
+    flex-shrink: 0;
+    color: var(--peach);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-align: right;
+    white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+    .ab-source-row {
+        flex-wrap: wrap;
+    }
+
+    .ab-source-row-value {
+        margin-left: calc(26px + 0.65rem);
+        text-align: left;
+    }
+}
+
+/* =====================================================
+    CARD GRID (Ruang Lingkup, Tim Pengembang)
+===================================================== */
+
+.ab-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+}
+
+.ab-card {
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.3rem 1.2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ab-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+    border-color: var(--spearmint);
+}
+
+.ab-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+    color: var(--navy);
+}
+
+.ab-card[data-accent="amber"] .ab-card-icon {
+    background: var(--amber);
+}
+
+.ab-card[data-accent="teal"] .ab-card-icon {
+    background: var(--teal-light);
+}
+
+.ab-card[data-accent="peach"] .ab-card-icon {
+    background: var(--peach);
+}
+
+.ab-card[data-accent="pale"] .ab-card-icon {
+    background: var(--teal-pale);
+}
+
+.ab-card h3 {
+    font-size: 1rem;
+    color: var(--peach);
+    margin-bottom: 0.45rem;
+}
+
+.ab-card p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255, 236, 209, 0.65);
+    margin: 0;
+}
+
+/* =====================================================
+    RUANG LINGKUP — TIMELINE
+    Terinspirasi dari mekanisme js/timeline.js (item kiri/kanan
+    berselang-seling, progress line yang mengisi saat scroll,
+    reveal via IntersectionObserver), diterapkan ulang dengan
+    palet halaman ini sendiri. Konten dirender oleh
+    js/about-webgis.js ke dalam #ruangLingkupTimeline.
+===================================================== */
+
+.rl-timeline {
+    position: relative;
+    padding: 0.4rem 0 0.2rem;
+}
+
+.rl-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: var(--line);
+    z-index: 0;
+}
+
+#rlProgress {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 0;
+    background: linear-gradient(180deg, var(--spearmint), var(--amber-light));
+    transition: height 0.5s cubic-bezier(.4, 0, .2, 1);
+    z-index: 1;
+}
+
+/* .rl-item punya "transform" (untuk animasi geser), yang di semua browser
+   otomatis membuat stacking context baru untuk dirinya sendiri. Ini penting
+   disadari: artinya z-index anak (.rl-marker) hanya berlaku DI DALAM
+   .rl-item, bukan dibandingkan langsung dengan #rlProgress. Supaya marker
+   selalu tampil di atas garis progres (bukan tertutup/tertembus garis),
+   .rl-item sendiri diberi z-index lebih tinggi daripada #rlProgress. */
+.rl-item {
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    padding: 0 2.6rem 2.2rem;
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(.22, 1, .36, 1),
+        transform 0.7s cubic-bezier(.22, 1, .36, 1);
+    transition-delay: calc(var(--i, 0) * 0.12s);
+}
+
+.rl-item.left {
+    left: 0;
+    transform: translateX(-36px);
+}
+
+.rl-item.right {
+    left: 50%;
+    transform: translateX(36px);
+}
+
+.rl-item.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.rl-marker {
+    position: absolute;
+    top: 0.1rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--navy);
+    z-index: 1;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    border: 3px solid var(--purple-slightlydark);
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(.34, 1.56, .64, 1) 0.15s,
+        opacity 0.4s ease 0.15s,
+        box-shadow 0.25s ease;
+}
+
+.rl-item.is-visible .rl-marker {
+    transform: scale(1);
+    opacity: 1;
+    animation: rlMarkerPulse 2.4s ease-in-out 0.7s infinite;
+}
+
+@keyframes rlMarkerPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 0 5px rgba(0, 255, 179, 0.18);
+    }
+}
+
+.rl-item.left .rl-marker {
+    right: -17px;
+}
+
+.rl-item.right .rl-marker {
+    left: -17px;
+}
+
+.rl-item[data-accent="amber"] .rl-marker {
+    background: var(--amber);
+}
+
+.rl-item[data-accent="teal"] .rl-marker {
+    background: var(--teal-light);
+}
+
+.rl-item[data-accent="peach"] .rl-marker {
+    background: var(--peach);
+}
+
+.rl-item[data-accent="pale"] .rl-marker {
+    background: var(--teal-pale);
+}
+
+.rl-card {
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.rl-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+    border-color: var(--spearmint);
+}
+
+.rl-card h3 {
+    font-size: 1rem;
+    color: var(--peach);
+    margin-bottom: 0.45rem;
+}
+
+.rl-card p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255, 236, 209, 0.65);
+    margin: 0;
+}
+
+/* =====================================================
+    METODOLOGI — STEPS
+===================================================== */
+
+.ab-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.ab-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ab-steps li:hover {
+    transform: translateX(4px);
+    border-color: var(--spearmint);
+}
+
+.ab-step-num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    font-weight: 700;
+    font-family: 'Fraunces', serif;
+}
+
+.ab-steps h3 {
+    font-size: 0.94rem;
+    color: var(--peach);
+    margin-bottom: 0.3rem;
+}
+
+.ab-steps p {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(255, 236, 209, 0.65);
+    margin: 0;
+}
+
+/* =====================================================
+    TEKNOLOGI
+===================================================== */
+
+.ab-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 0.9rem;
+}
+
+.ab-tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem 0.8rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.ab-tech-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--spearmint);
+}
+
+.ab-tech-item i {
+    font-size: 1.7rem;
+    color: var(--amber-light);
+}
+
+.ab-tech-item span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--peach);
+}
+
+/* =====================================================
+    VERSI
+===================================================== */
+
+.ab-version-box {
+    background: var(--dark-purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.ab-version-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.85rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--line);
+}
+
+.ab-version-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.ab-version-label {
+    color: rgba(255, 236, 209, 0.6);
+}
+
+.ab-version-value {
+    color: var(--amber-light);
+    font-weight: 700;
+}
+
+/* =====================================================
+    FOOTER
+===================================================== */
+
+.ab-foot {
+    text-align: center;
+    font-size: 0.72rem;
+    color: rgba(255, 236, 209, 0.45);
+    padding: 1.6rem 1rem;
+    border-top: 1px solid var(--line);
+    line-height: 1.8;
+}
+
+/* =====================================================
+    RESPONSIVE
+===================================================== */
+
+@media (max-width: 760px) {
+    .ab-main {
+        padding: 0 1rem 2.4rem;
+    }
+
+    .ab-hero {
+        padding: 2.2rem 0 2rem;
+    }
+
+    .ab-hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .ab-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ab-dual-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ab-background-panel {
+        padding: 1.2rem 1.3rem;
+    }
+
+    .rl-timeline::before,
+    #rlProgress {
+        left: 17px;
+    }
+
+    .rl-item,
+    .rl-item.left,
+    .rl-item.right {
+        width: 100%;
+        left: 0;
+        padding: 0 0 1.8rem 3.4rem;
+        transform: translateX(16px);
+    }
+
+    .rl-item.is-visible {
+        transform: translateX(0);
+    }
+
+    .rl-item.left .rl-marker,
+    .rl-item.right .rl-marker {
+        left: 0;
+        right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .ab-topbar {
+        padding: 0 0.9rem;
+    }
+
+    .ab-back-btn span {
+        display: none;
+    }
+
+    .ab-version-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+}
+
+/* =====================================================
+    ANIMATED WAVE BACKGROUND — 4 LAYER
+    Dekorasi non-interaktif di balik seluruh konten halaman.
+    Dipasang sebagai elemen HTML asli (.wave-bg + 4x .wave-layer,
+    lihat about-webgis.html tepat setelah <body>) supaya bisa
+    dikontrol per-layer dengan presisi — TIDAK menyentuh
+    struktur konten lain maupun skrip yang sudah ada
+    (about-webgis.js dsb).
+
+    PENTING soal urutan lapisan (stacking order):
+    <body> punya background solid dari aturan "html, body { ... }"
+    di atas. Karena body sendiri bukan stacking context, background
+    solid itu akan tergambar DI ATAS elemen ber-z-index:-1, sehingga
+    wave tidak akan terlihat. Solusinya: <html> tetap solid (sebagai
+    lapisan paling belakang), <body> dibuat transparan supaya wave
+    di baliknya tembus terlihat. Warna akhir yang tampak tetap sama
+    persis karena <html> mengisi variabel warna yang sama.
+===================================================== */
+
+html {
+    background: var(--purple-slightlydark);
+}
+
+body {
+    background: transparent;
+}
+
+.wave-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.wave-layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: repeat-x;
+    will-change: background-position, transform;
+}
+
+/* Layer 1 — paling belakang, paling besar & paling lambat */
+.wave-layer-1 {
+    height: 48vh;
+    min-height: 300px;
+    background-size: 1700px 100%;
+    opacity: 0.85;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1700 260' preserveAspectRatio='none'%3E%3Cpath d='M0,150 C280,80 460,220 850,140 C1240,60 1420,200 1700,120 L1700,260 L0,260 Z' fill='%2330c6da' fill-opacity='0.10'/%3E%3C/svg%3E");
+    animation: abWaveScrollA 38s linear infinite, abWaveBobA 9s ease-in-out infinite alternate;
+}
+
+/* Layer 2 — spearmint, kecepatan sedang, arah berlawanan */
+.wave-layer-2 {
+    height: 38vh;
+    min-height: 250px;
+    background-size: 1500px 100%;
+    opacity: 0.85;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 220' preserveAspectRatio='none'%3E%3Cpath d='M0,120 C260,190 440,50 760,110 C1080,170 1240,70 1500,120 L1500,220 L0,220 Z' fill='%2300ffb3' fill-opacity='0.12'/%3E%3C/svg%3E");
+    animation: abWaveScrollB 24s linear infinite reverse, abWaveBobB 7s ease-in-out infinite alternate;
+}
+
+/* Layer 3 — teal-pale, lebih tipis & terang, lebih cepat */
+.wave-layer-3 {
+    height: 26vh;
+    min-height: 190px;
+    background-size: 1300px 100%;
+    opacity: 0.8;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 190' preserveAspectRatio='none'%3E%3Cpath d='M0,110 C220,60 380,160 640,100 C900,40 1060,150 1300,90 L1300,190 L0,190 Z' fill='%23c2f9ff' fill-opacity='0.09'/%3E%3C/svg%3E");
+    animation: abWaveScrollC 16s linear infinite, abWaveBobA 6s ease-in-out infinite alternate-reverse;
+}
+
+/* Layer 4 — amber, paling depan, tertipis & tercepat, aksen hangat */
+.wave-layer-4 {
+    height: 15vh;
+    min-height: 120px;
+    background-size: 1100px 100%;
+    opacity: 0.75;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 140' preserveAspectRatio='none'%3E%3Cpath d='M0,80 C200,130 340,30 560,75 C780,120 900,40 1100,85 L1100,140 L0,140 Z' fill='%23ffb56b' fill-opacity='0.10'/%3E%3C/svg%3E");
+    animation: abWaveScrollD 11s linear infinite reverse, abWaveBobB 5s ease-in-out infinite alternate;
+}
+
+@keyframes abWaveScrollA {
+    from { background-position-x: 0; }
+    to { background-position-x: -1700px; }
+}
+
+@keyframes abWaveScrollB {
+    from { background-position-x: 0; }
+    to { background-position-x: -1500px; }
+}
+
+@keyframes abWaveScrollC {
+    from { background-position-x: 0; }
+    to { background-position-x: -1300px; }
+}
+
+@keyframes abWaveScrollD {
+    from { background-position-x: 0; }
+    to { background-position-x: -1100px; }
+}
+
+@keyframes abWaveBobA {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+@keyframes abWaveBobB {
+    from { transform: translateY(0); }
+    to { transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wave-layer {
+        animation: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .wave-layer-1 { height: 40vh; }
+    .wave-layer-2 { height: 32vh; }
+    .wave-layer-3 { height: 22vh; }
+    .wave-layer-4 { height: 13vh; }
+}

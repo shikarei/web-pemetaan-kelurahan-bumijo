@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<hea>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WebGIS Kelurahan Bumijo — KKN 2026</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/map-style.css" />
+    </head>
+
+    <body>
+
+        <header class="topbar">
+            <div class="brand">
+                <span class="display">BUMIJO</span>
+                <small>WebGIS &middot; KKN Juli 2026</small>
+            </div>
+
+            <div class="basemap-switch" id="basemapSwitch">
+                <span class="switch-pill" id="switchPill"></span>
+                <button data-base="light" class="active">Terang</button>
+                <button data-base="dark">Gelap</button>
+                <button data-base="satellite">Satelit</button>
+                <button data-base="osm">OSM</button>
+            </div>
+
+            <a href="profil-lokal.html" class="profil-lokal-link" id="profilLokalLink">
+                <i class="bi bi-people-fill"></i>
+                <span>Profil Lokal</span>
+            </a>
+
+            <a href="about-webgis.html" class="info-link" id="infoLink" aria-label="Tentang WebGIS">
+                <i class="bi bi-info-circle"></i>
+                <span class="info-tooltip">Tentang WebGIS</span>
+            </a>
+
+            <div class="sidebar-tabs" id="sidebarTabs">
+                <span class="sidebar-tabs-pill" id="sidebarTabsPill"></span>
+                <button class="sidebar-tab active" id="tabLegenda" data-panel="legenda">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    Legenda
+                </button>
+                <button class="sidebar-tab" id="tabStatistik" data-panel="statistik">
+                    <i class="bi bi-bar-chart-fill"></i>
+                    Statistik
+                </button>
+            </div>
+        </header>
+
+        <div id="loadingScreen" class="loading-screen" role="status" aria-live="polite" aria-busy="true">
+            <div class="loading-content">
+                <div class="loading-icon">
+                    <i class="bi bi-map-fill"></i>
+                </div>
+                <h1 class="loading-title">WebGIS Kelurahan Bumijo</h1>
+                <p class="loading-subtitle">Memuat data spasial dan informasi tematik...</p>
+                <div class="loading-spinner" aria-hidden="true"></div>
+                <div class="loading-progress" aria-hidden="true">
+                    <div class="loading-progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+        <aside class="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-head-row">
+                    <h2 id="sidebarPanelTitle">Legenda Peta</h2>
+                    <button class="icon-btn" id="sidebarClose">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="sidebar-stat" id="sidebarStatRow">
+                    <span>Layer aktif: <span class="count" id="activeCount">0</span>/<span
+                            id="totalCount">0</span></span>
+                    <button class="reset-link" id="resetLayers">Tampilkan semua</button>
+                </div>
+            </div>
+
+            <div class="sidebar-panels" id="sidebarPanels">
+
+                <div class="sidebar-panel active" data-panel="legenda" id="panelLegenda">
+                    <div class="sidebar-scroll">
+
+                        <label class="legend-master-control" for="toggleAllLayers">
+                            <input type="checkbox" class="legend-master-checkbox" id="toggleAllLayers" checked>
+                            <span class="legend-master-icon">
+                                <i class="bi bi-eye-fill"></i>
+                            </span>
+                            <span class="legend-master-text">
+                                <span class="legend-master-title">Semua Layer</span>
+                                <span class="legend-master-sub">Tampilkan / sembunyikan seluruh data sekaligus</span>
+                            </span>
+                        </label>
+
+                        <div class="acc-group open" data-accent="amber">
+                            <div class="acc-header-row">
+                                <input type="checkbox" class="acc-master-checkbox" id="toggleGroupPrioritasSampah"
+                                    checked aria-label="Tampilkan atau sembunyikan semua layer Prioritas Sampah">
+                                <button class="acc-header">
+                                    <span class="acc-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                            <path
+                                                d="M12.5 2c.7 2.3-.6 3.6-1.6 5-1.1 1.5-1.9 2.9-1.9 4.6a3 3 0 0 0 6 0c0-.9-.4-1.5-.4-1.5 1.3.5 2.4 2 2.4 4.1a5 5 0 1 1-10 0c0-3.6 2.5-5.7 3.8-7.6C11.3 5.4 12 4 12.5 2z" />
+                                        </svg>
+                                    </span>
+                                    <span class="acc-titles">
+                                        <span class="acc-title">Prioritas Sampah</span>
+                                        <span class="acc-sub">Analisis Kernel Density</span>
+                                    </span>
+                                    <svg class="acc-chevron" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="acc-body">
+                                <div class="gradient-bar"></div>
+                                <div class="gradient-labels"><span>Rendah</span><span>Sedang</span><span>Tinggi</span>
+                                </div>
+
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleHeatSampah" checked>
+                                    <span class="legend-swatch circle" style="background: #d782ff;"></span>
+                                    <label for="toggleHeatSampah">Heatmap Kepadatan</label>
+                                </div>
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleTitikSampah" checked>
+                                    <span class="legend-swatch circle"
+                                        style="background: var(--peach); border: 1px solid var(--chocolate);"></span>
+                                    <label for="toggleTitikSampah">Titik Penumpukan Sampah</label>
+                                </div>
+
+                                <div class="slider-row">
+                                    <label for="heatRadius">Radius sebaran heatmap</label>
+                                    <input type="range" id="heatRadius" min="15" max="55" value="32">
+                                </div>
+
+                                <!-- <p class="legend-note">Sumber:
+                                    <code>TitikPenumpukanSampah30Juni2026_4326.geojson</code>.<br>
+                                    Bobot kepadatan dibaca dari atribut data bila tersedia; jika tidak ditemukan,
+                                    seluruh titik
+                                    dianggap berbobot sama.</p> -->
+                            </div>
+                        </div>
+
+                        <div class="acc-group open" data-accent="amber-light">
+                            <div class="acc-header-row">
+                                <input type="checkbox" class="acc-master-checkbox" id="toggleGroupBuffer" checked
+                                    aria-label="Tampilkan atau sembunyikan semua layer Jangkauan Layanan Sampah">
+                                <button class="acc-header">
+                                    <span class="acc-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="9"></circle>
+                                            <circle cx="12" cy="12" r="5"></circle>
+                                            <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"></circle>
+                                        </svg>
+                                    </span>
+                                    <span class="acc-titles">
+                                        <span class="acc-title">Jangkauan Layanan Sampah</span>
+                                        <span class="acc-sub">Analisis Buffer</span>
+                                    </span>
+                                    <svg class="acc-chevron" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="acc-body">
+                                <div class="legend-subhead">Buffer Terproses (Clip ke Batas Kelurahan)</div>
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleBufferClip" checked>
+                                    <span class="legend-swatch circle" style="background: var(--teal);"></span>
+                                    <label for="toggleBufferClip">Tampilkan Buffer (Clip)</label>
+                                </div>
+                                <div id="bufferClipLegendRef">
+                                    <p class="legend-note" id="bufferLoadingNote"
+                                        style="margin-top:0.3rem; padding-top:0; border-top:none;">Memuat kelas radius
+                                        dari
+                                        <code>ClipBufferLayananSampah204080160_4326.geojson</code>…
+                                    </p>
+                                </div>
+
+                                <hr class="legend-divider">
+
+                                <div class="legend-subhead">Buffer Data Asli (Belum Di-clip)</div>
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleBufferRaw">
+                                    <span class="legend-swatch circle"
+                                        style="background: transparent; border: 2px dashed var(--teal);"></span>
+                                    <label for="toggleBufferRaw">Tampilkan Buffer (Data Asli)</label>
+                                </div>
+                                <div id="bufferRawLegendRef">
+                                    <p class="legend-note" id="bufferRawLoadingNote"
+                                        style="margin-top:0.3rem; padding-top:0; border-top:none;">Memuat kelas radius
+                                        dari
+                                        <code>BufferLayananSampah204080160_4326.geojson</code>…
+                                    </p>
+                                </div>
+
+                                <hr class="legend-divider">
+
+                                <div class="legend-subhead">Titik Layanan</div>
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleTPS" checked>
+                                    <span class="legend-swatch circle"
+                                        style="background: var(--navy); border: 1px solid var(--teal-pale);"></span>
+                                    <label for="toggleTPS">TPS / Titik Layanan Sampah</label>
+                                </div>
+
+                                <!-- <p class="legend-note">Sumber:
+                                    <code>ClipBufferLayananSampah204080160_4326.geojson</code>,
+                                    <code>BufferLayananSampah204080160_4326.geojson</code> &amp;
+                                    <code>TitikLayananSampah_4326.geojson</code>.<br>
+                                    Ketiga layer ini masing-masing punya satu tombol tampil/sembunyi sendiri, persis
+                                    seperti
+                                    titik
+                                    layanan.
+                                    Warna di dalam tiap layer buffer tetap mengikuti kelas radius aslinya (hanya sebagai
+                                    referensi,
+                                    bukan tombol terpisah).
+                                </p>-->
+                            </div>
+                        </div>
+
+                        <div class="acc-group open" data-accent="peach">
+                            <div class="acc-header-row">
+                                <input type="checkbox" class="acc-master-checkbox" id="toggleGroupBudaya" checked
+                                    aria-label="Tampilkan atau sembunyikan semua layer Ruang Aktivitas Budaya">
+                                <button class="acc-header">
+                                    <span class="acc-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M4 21V10l8-6 8 6v11"></path>
+                                            <path d="M3 21h18"></path>
+                                            <path d="M9.5 21v-6h5v6"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="acc-titles">
+                                        <span class="acc-title">Ruang Aktivitas Budaya</span>
+                                        <span class="acc-sub">Inventarisasi Aset Budaya</span>
+                                    </span>
+                                    <svg class="acc-chevron" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="acc-body">
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleRuangBudaya" checked>
+                                    <span class="legend-swatch circle" style="background: var(--peach);"></span>
+                                    <label for="toggleRuangBudaya">Ruang Aktivitas Budaya</label>
+                                </div>
+                                <!-- <p class="legend-note">Sumber:
+                                    <code>TitikRuangBudayaBumijo_4326.geojson</code>.<br>
+                                    Setiap titik menampilkan isi field "Nama" dan "Keterangan" pada popup.</p> -->
+                            </div>
+                        </div>
+
+                        <div class="acc-group open" data-accent="teal">
+                            <div class="acc-header-row">
+                                <input type="checkbox" class="acc-master-checkbox" id="toggleGroupUmkm" checked
+                                    aria-label="Tampilkan atau sembunyikan semua layer UMKM &amp; Ekonomi Kreatif">
+                                <button class="acc-header">
+                                    <span class="acc-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M3 9.5 4 4h16l1 5.5"></path>
+                                            <path
+                                                d="M3.5 9.5a2.2 2.2 0 0 0 4.3.6 2.2 2.2 0 0 0 4.2 0 2.2 2.2 0 0 0 4.2 0 2.2 2.2 0 0 0 4.3-.6">
+                                            </path>
+                                            <path d="M5 10v10h14V10"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="acc-titles">
+                                        <span class="acc-title">UMKM &amp; Ekonomi Kreatif</span>
+                                        <span class="acc-sub">Pemetaan Ekonomi Lokal</span>
+                                    </span>
+                                    <svg class="acc-chevron" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="acc-body">
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleKuliner" checked>
+                                    <span class="legend-swatch circle" style="background: #5becff;"></span>
+                                    <label for="toggleKuliner">Kuliner</label>
+                                </div>
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleBarangJasa" checked>
+                                    <span class="legend-swatch circle"
+                                        style="background: #ff82d5;"></span>
+                                    <label for="toggleBarangJasa">Barang &amp; Jasa</label>
+                                </div>
+                                <!-- <p class="legend-note">Sumber: <code>UMKMKuliner_4326.geojson</code> &amp;
+                                    <code>UMKMBarangJasa_4326.geojson</code>.
+                                </p> -->
+                            </div>
+                        </div>
+
+                        <div class="acc-group open" data-accent="pale">
+                            <div class="acc-header-row">
+                                <input type="checkbox" class="acc-master-checkbox" id="toggleGroupReferensi" checked
+                                    aria-label="Tampilkan atau sembunyikan semua layer Batas Wilayah &amp; Jalan">
+                                <button class="acc-header">
+                                    <span class="acc-icon">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                                            <line x1="9" y1="3" x2="9" y2="18"></line>
+                                            <line x1="15" y1="6" x2="15" y2="21"></line>
+                                        </svg>
+                                    </span>
+                                    <span class="acc-titles">
+                                        <span class="acc-title">Batas Wilayah &amp; Jalan</span>
+                                        <span class="acc-sub">Data Referensi</span>
+                                    </span>
+                                    <svg class="acc-chevron" viewBox="0 0 24 24" width="15" height="15" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="acc-body">
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleBatasKelurahan" checked>
+                                    <span class="legend-swatch"
+                                        style="background: transparent; border: 2px dashed var(--amber);"></span>
+                                    <label for="toggleBatasKelurahan">Batas Kelurahan Bumijo</label>
+                                </div>
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleJalanArea" checked>
+                                    <span class="legend-swatch" style="background: var(--red);"></span>
+                                    <label for="toggleJalanArea">Jalan (Poligon Area)</label>
+                                </div>
+                                <div class="legend-item">
+                                    <input type="checkbox" class="layer-toggle" id="toggleJalanGaris" checked>
+                                    <span class="legend-swatch line"
+                                        style="background: var(--orange); height:3px;"></span>
+                                    <label for="toggleJalanGaris">Jalan (Garis)</label>
+                                </div>
+                                <!--<p class="legend-note">Sumber: <code>AdministrasiKelurahanBumijo4326.geojson</code>,
+                                    <code>JalanAreaBumijo4326.geojson</code>, <code>JalanGarisBumijo4326.geojson</code>.
+                                </p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /panelLegenda -->
+
+                <div class="sidebar-panel" data-panel="statistik" id="panelStatistik">
+                    <div class="sidebar-scroll">
+
+                        <!--<p class="stat-intro">Ringkasan data spasial Kelurahan Bumijo — dihitung otomatis dari layer
+                            yang
+                            sudah dimuat di peta.</p>-->
+
+                        <div class="stat-section">
+                            <div class="stat-section-title">
+                                <i class="bi bi-fire"></i>
+                                Prioritas Penanganan Sampah
+                            </div>
+                            <div class="stat-cards" id="statCardsKernel"></div>
+                        </div>
+
+                        <div class="stat-section">
+                            <div class="stat-section-title">
+                                <i class="bi bi-diagram-3-fill"></i>
+                                Jangkauan Layanan Sampah
+                            </div>
+                            <div class="stat-cards" id="statCardsBuffer"></div>
+                        </div>
+
+                        <div class="stat-section">
+                            <div class="stat-section-title">
+                                <i class="bi bi-building"></i>
+                                Ruang &amp; Aktivitas Budaya
+                            </div>
+                            <div class="stat-cards" id="statCardsBudaya"></div>
+                        </div>
+
+                        <div class="stat-section">
+                            <div class="stat-section-title">
+                                <i class="bi bi-shop"></i>
+                                UMKM &amp; Ekonomi Kreatif
+                            </div>
+                            <div class="stat-cards" id="statCardsUmkm"></div>
+                        </div>
+
+                        <!-- <p class="legend-note">Angka di atas dihitung langsung dari jumlah data (fitur) pada file
+                            GeoJSON
+                            yang sudah dimuat masing-masing layer, dan diperbarui otomatis setiap panel ini dibuka.</p>-->
+
+                    </div>
+                </div>
+                <!-- /panelStatistik -->
+
+            </div>
+            <!-- /sidebarPanels -->
+
+            <div class="sidebar-foot">
+                WebGIS Kelurahan Bumijo &middot; Kemantren Jetis, Kota Yogyakarta &middot; KKN Juli 2026.
+            </div>
+        </aside>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
+
+        <script src="js/utils.js"></script>
+        <script src="js/scale-bar.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/ui.js"></script>
+        <script src="js/kernel-density.js"></script>
+        <script src="js/buffer.js"></script>
+        <script src="js/budaya.js"></script>
+        <script src="js/umkm.js"></script>
+        <script src="js/reference.js"></script>
+        <script src="js/search.js"></script>
+    </body>
+
+</html>

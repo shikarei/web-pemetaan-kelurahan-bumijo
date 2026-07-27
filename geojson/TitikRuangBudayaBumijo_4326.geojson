@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "TitikRuangBudayaBumijo_4326",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "RTHP Taman Bumijo RW 09", "Keterangan": "Tempat latihan kegiatan kesenian & kebudayaan" }, "geometry": { "type": "Point", "coordinates": [ 110.356230685179185, -7.787776937734095 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "Monumen Gelora Rakyat Mataram 45", "Keterangan": "Monumen dengan relief, prasasti, dan plakat untuk menghormati Tentara Rakyat Mataram" }, "geometry": { "type": "Point", "coordinates": [ 110.357700252955922, -7.788035268256104 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "RTHP Taman Bumijo RW 11", "Keterangan": "Tempat latihan kegiatan kesenian & kebudayaan Paguyuban Antasena" }, "geometry": { "type": "Point", "coordinates": [ 110.35614572268922, -7.784525657386538 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "Situs Pesuncen Kampung Badran", "Keterangan": "Situs meditasi peninggalan terdahulu" }, "geometry": { "type": "Point", "coordinates": [ 110.355249221957848, -7.787616142252254 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "Gedung Serba Guna", "Keterangan": "Tempat latihan kegiatan kesenian & kebudayaan Paguyuban Antasena" }, "geometry": { "type": "Point", "coordinates": [ 110.358341190264738, -7.783339624497654 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "Aula Kantor Kelurahan Bumijo", "Keterangan": "Tempat latihan kegiatan kesenian & kebudayaan Paguyuban Antasena" }, "geometry": { "type": "Point", "coordinates": [ 110.358843337404736, -7.786462415308526 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "Balai RK Bumijo", "Keterangan": "Tempat latihan kegiatan kesenian & kebudayaan Paguyuban Antasena" }, "geometry": { "type": "Point", "coordinates": [ 110.36055328610054, -7.785987688866694 ] } },
+{ "type": "Feature", "properties": { "Id": 0, "Nama": "Balai RT 48 Bumijo", "Keterangan": "Tempat latihan kegiatan kesenian & kebudayaan Paguyuban Antasena" }, "geometry": { "type": "Point", "coordinates": [ 110.355349255870451, -7.785219673901778 ] } }
+]
+}

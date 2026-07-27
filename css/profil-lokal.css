@@ -1,0 +1,730 @@
+/* =========================================================================
+    PROFIL LOKAL — Kelurahan Bumijo
+    Palet & token disamakan dengan css/map-style.css (WebGIS utama) supaya
+    identitas visual konsisten, tetapi file ini berdiri sendiri sehingga
+    tidak memengaruhi halaman peta sama sekali.
+========================================================================= */
+
+:root {
+    --dark-purple: #280047;
+    --purple: #430076;
+    --purple-light: #9d00b6;
+    --navy: #001524;
+    --teal: #008ba0;
+    --teal-light: #30c6da;
+    --teal-pale: #c2f9ff;
+    --spearmint: #00ffb3;
+
+    --white: #ffffff;
+    --peach: #ffecd1;
+    --peach-mid: #e0b97e;
+    --amber: #ff891c;
+    --amber-light: #ffb56b;
+    --chocolate: #78290f;
+    --chocolate-light: #b3491f;
+    --line: rgba(255, 236, 209, 0.14);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--white);
+    background: var(--dark-purple);
+}
+
+h1,
+h2,
+h3,
+.pl-display {
+    font-family: 'Fraunces', serif;
+    margin: 0;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* =====================================================
+    TOPBAR
+===================================================== */
+
+.pl-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    padding: 0 1.2rem;
+    background: var(--dark-purple);
+    border-bottom: 1px solid var(--line);
+}
+
+.pl-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.pl-display {
+    font-size: 1.5rem;
+    letter-spacing: 0.01em;
+}
+
+.pl-brand small {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--spearmint);
+}
+
+.pl-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    border: none;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pl-back-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 255, 125, 0.35);
+}
+
+/* =====================================================
+    MAIN / HERO
+===================================================== */
+
+.pl-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.4rem 1.4rem 3rem;
+}
+
+.pl-hero {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: plHeroRise 0.6s ease forwards;
+}
+
+@keyframes plHeroRise {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pl-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(0, 255, 125, 0.35);
+    border: 1px dashed var(--spearmint);
+    color: var(--amber-light);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    animation: plBadgePulse 2.6s ease-in-out infinite;
+}
+
+@keyframes plBadgePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 179, 0.35);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(0, 255, 179, 0);
+    }
+}
+
+.pl-hero-badge i {
+    animation: plMicWiggle 2.6s ease-in-out infinite;
+}
+
+@keyframes plMicWiggle {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(-12deg);
+    }
+}
+
+.pl-hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.9rem;
+}
+
+.pl-hero p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: rgba(255, 236, 209, 0.72);
+    margin: 0;
+}
+
+/* =====================================================
+    SECTIONS
+===================================================== */
+
+.pl-section {
+    margin-bottom: 3.2rem;
+}
+
+.pl-section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.4rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.pl-section-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.3rem;
+    color: var(--peach);
+}
+
+.pl-section-head h2 i {
+    color: var(--spearmint);
+    font-size: 1.1rem;
+}
+
+.pl-section-head p {
+    margin: 0;
+    font-size: 0.84rem;
+    color: rgba(255, 236, 209, 0.55);
+}
+
+/* =====================================================
+    FILTER BAR — interaktif per section
+===================================================== */
+
+.pl-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-bottom: 1.2rem;
+}
+
+.pl-filter-btn {
+    border: 1px solid var(--line);
+    background: var(--purple);
+    color: rgba(255, 236, 209, 0.75);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease,
+        border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pl-filter-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--spearmint);
+    color: var(--white);
+}
+
+.pl-filter-btn:active {
+    transform: translateY(0) scale(0.96);
+}
+
+.pl-filter-btn.active {
+    background: var(--spearmint);
+    border-color: var(--spearmint);
+    color: var(--dark-purple);
+    box-shadow: 0 6px 16px rgba(0, 255, 179, 0.3);
+}
+
+/* =====================================================
+    CARD GRID
+===================================================== */
+
+.pl-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.1rem;
+}
+
+.pl-card {
+    position: relative;
+    background: var(--purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: plCardRise 0.5s ease forwards;
+    animation-delay: calc(var(--i, 0) * 0.08s);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pl-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal-light), var(--amber-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: 2;
+}
+
+.pl-card:hover::before {
+    transform: scaleX(1);
+}
+
+.pl-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+    border-color: var(--spearmint);
+}
+
+@keyframes plCardRise {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pl-card-photo-wrap {
+    overflow: hidden;
+    background: var(--dark-purple);
+}
+
+.pl-card-photo {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: var(--dark-purple);
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.pl-card:hover .pl-card-photo {
+    transform: scale(1.08);
+}
+
+.pl-card-body {
+    padding: 1rem 1.1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.pl-card-category {
+    align-self: flex-start;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--dark-purple);
+    background: var(--amber-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.pl-card:hover .pl-card-category {
+    background: var(--spearmint);
+    transform: translateY(-1px);
+}
+
+.pl-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    color: var(--peach);
+    margin: 0;
+}
+
+.pl-card-summary {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(255, 236, 209, 0.68);
+    margin: 0;
+    flex: 1;
+}
+
+.pl-card-more {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+    background: transparent;
+    border: 1px solid var(--teal-pale);
+    color: var(--teal-pale);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pl-card-more:hover {
+    background: var(--teal);
+    color: var(--white);
+    border-color: var(--teal);
+}
+
+.pl-card-more i {
+    transition: transform 0.25s ease;
+}
+
+.pl-card-more:hover i {
+    transform: translateX(3px);
+}
+
+/* =====================================================
+    EMPTY STATE — filter tanpa hasil
+===================================================== */
+
+.pl-empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2.4rem 1rem;
+    color: rgba(255, 236, 209, 0.55);
+    opacity: 0;
+    animation: plCardRise 0.4s ease forwards;
+}
+
+.pl-empty-state i {
+    font-size: 1.8rem;
+    color: var(--teal-pale);
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.pl-empty-state p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* =====================================================
+    FOOTER
+===================================================== */
+
+.pl-foot {
+    text-align: center;
+    font-size: 0.7rem;
+    color: rgba(255, 236, 209, 0.4);
+    padding: 1.4rem;
+    border-top: 1px solid var(--line);
+}
+
+/* =====================================================
+    MODAL — "Baca Selengkapnya"
+===================================================== */
+
+.pl-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.pl-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pl-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 21, 36, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+.pl-modal-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--purple);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.4rem 1.6rem;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4);
+    transform: translateY(18px) scale(0.96);
+    transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.pl-modal.open .pl-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.pl-modal-close {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--dark-purple);
+    color: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pl-modal-close:hover {
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    transform: rotate(90deg);
+}
+
+.pl-modal-photo {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+    background: var(--dark-purple);
+}
+
+.pl-modal-category {
+    display: inline-block;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--dark-purple);
+    background: var(--amber-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.6rem;
+}
+
+.pl-modal-content h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    color: var(--peach);
+    margin: 0 0 0.6rem;
+}
+
+.pl-modal-content p {
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: rgba(255, 236, 209, 0.75);
+    margin: 0;
+    white-space: pre-line;
+}
+
+/* =====================================================
+    RESPONSIVE
+===================================================== */
+
+@media (max-width: 760px) {
+    .pl-main {
+        padding: 1.8rem 1rem 2.4rem;
+    }
+
+    .pl-hero h1 {
+        font-size: 1.55rem;
+    }
+
+    .pl-card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .pl-filter-btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pl-topbar {
+        padding: 0 0.9rem;
+    }
+
+    .pl-back-btn span {
+        display: none;
+    }
+
+    .pl-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pl-hero-badge {
+        font-size: 0.66rem;
+    }
+}
+
+/* =====================================================
+    ANIMATED WAVE BACKGROUND — 4 LAYER
+    Dekorasi non-interaktif di balik seluruh konten halaman.
+    Dipasang sebagai elemen HTML asli (.wave-bg + 4x .wave-layer,
+    lihat profil-lokal.html tepat setelah <body>) supaya bisa
+    dikontrol per-layer dengan presisi — TIDAK menyentuh
+    struktur konten, modal, filter bar, maupun skrip yang
+    sudah ada (profil-lokal.js dsb).
+
+    PENTING soal urutan lapisan (stacking order):
+    <body> punya background solid dari aturan "html, body { ... }"
+    di atas. Karena body sendiri bukan stacking context, background
+    solid itu akan tergambar DI ATAS elemen ber-z-index:-1, sehingga
+    wave tidak akan terlihat. Solusinya: <html> tetap solid (sebagai
+    lapisan paling belakang), <body> dibuat transparan supaya wave
+    di baliknya tembus terlihat. Warna akhir yang tampak tetap sama
+    persis karena <html> mengisi variabel warna yang sama.
+===================================================== */
+
+html {
+    background: var(--dark-purple);
+}
+
+body {
+    background: transparent;
+}
+
+.wave-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.wave-layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: repeat-x;
+    will-change: background-position, transform;
+}
+
+/* Layer 1 — paling belakang, paling besar & paling lambat */
+.wave-layer-1 {
+    height: 50vh;
+    min-height: 310px;
+    background-size: 1700px 100%;
+    opacity: 0.85;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1700 260' preserveAspectRatio='none'%3E%3Cpath d='M0,150 C280,90 460,210 850,140 C1240,70 1420,200 1700,130 L1700,260 L0,260 Z' fill='%2330c6da' fill-opacity='0.11'/%3E%3C/svg%3E");
+    animation: plWaveScrollA 40s linear infinite, plWaveBobA 9s ease-in-out infinite alternate;
+}
+
+/* Layer 2 — spearmint, kecepatan sedang, arah berlawanan */
+.wave-layer-2 {
+    height: 39vh;
+    min-height: 255px;
+    background-size: 1500px 100%;
+    opacity: 0.85;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 220' preserveAspectRatio='none'%3E%3Cpath d='M0,120 C260,190 440,50 760,110 C1080,170 1240,70 1500,120 L1500,220 L0,220 Z' fill='%2300ffb3' fill-opacity='0.13'/%3E%3C/svg%3E");
+    animation: plWaveScrollB 25s linear infinite reverse, plWaveBobB 7s ease-in-out infinite alternate;
+}
+
+/* Layer 3 — teal-pale, lebih tipis & terang, lebih cepat */
+.wave-layer-3 {
+    height: 27vh;
+    min-height: 195px;
+    background-size: 1300px 100%;
+    opacity: 0.8;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 190' preserveAspectRatio='none'%3E%3Cpath d='M0,110 C220,60 380,160 640,100 C900,40 1060,150 1300,90 L1300,190 L0,190 Z' fill='%23c2f9ff' fill-opacity='0.10'/%3E%3C/svg%3E");
+    animation: plWaveScrollC 17s linear infinite, plWaveBobA 6s ease-in-out infinite alternate-reverse;
+}
+
+/* Layer 4 — amber, paling depan, tertipis & tercepat, aksen hangat */
+.wave-layer-4 {
+    height: 16vh;
+    min-height: 125px;
+    background-size: 1100px 100%;
+    opacity: 0.75;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 140' preserveAspectRatio='none'%3E%3Cpath d='M0,80 C200,130 340,30 560,75 C780,120 900,40 1100,85 L1100,140 L0,140 Z' fill='%23ffb56b' fill-opacity='0.11'/%3E%3C/svg%3E");
+    animation: plWaveScrollD 12s linear infinite reverse, plWaveBobB 5s ease-in-out infinite alternate;
+}
+
+@keyframes plWaveScrollA {
+    from { background-position-x: 0; }
+    to { background-position-x: -1700px; }
+}
+
+@keyframes plWaveScrollB {
+    from { background-position-x: 0; }
+    to { background-position-x: -1500px; }
+}
+
+@keyframes plWaveScrollC {
+    from { background-position-x: 0; }
+    to { background-position-x: -1300px; }
+}
+
+@keyframes plWaveScrollD {
+    from { background-position-x: 0; }
+    to { background-position-x: -1100px; }
+}
+
+@keyframes plWaveBobA {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+@keyframes plWaveBobB {
+    from { transform: translateY(0); }
+    to { transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wave-layer {
+        animation: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .wave-layer-1 { height: 42vh; }
+    .wave-layer-2 { height: 33vh; }
+    .wave-layer-3 { height: 23vh; }
+    .wave-layer-4 { height: 14vh; }
+}
