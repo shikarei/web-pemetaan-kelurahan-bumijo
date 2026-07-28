@@ -147,8 +147,8 @@
                                 </div>
                                 <div class="legend-item">
                                     <input type="checkbox" class="layer-toggle" id="toggleTitikSampah" checked>
-                                    <span class="legend-swatch icon-marker circle"
-                                        style="--marker-color:#F97316;"><i class="bi bi-trash3-fill"></i></span>
+                                    <span class="legend-swatch icon-marker circle" style="--marker-color:#F97316;"><i
+                                            class="bi bi-trash3-fill"></i></span>
                                     <label for="toggleTitikSampah">Titik Penumpukan Sampah</label>
                                 </div>
 
@@ -156,12 +156,6 @@
                                     <label for="heatRadius">Radius sebaran heatmap</label>
                                     <input type="range" id="heatRadius" min="15" max="55" value="32">
                                 </div>
-
-                                <!-- <p class="legend-note">Sumber:
-                                    <code>TitikPenumpukanSampah30Juni2026_4326.geojson</code>.<br>
-                                    Bobot kepadatan dibaca dari atribut data bila tersedia; jika tidak ditemukan,
-                                    seluruh titik
-                                    dianggap berbobot sama.</p> -->
                             </div>
                         </div>
 
@@ -230,19 +224,6 @@
                                             class="bi bi-recycle"></i></span>
                                     <label for="toggleTPS">TPS / Titik Layanan Sampah</label>
                                 </div>
-
-                                <!-- <p class="legend-note">Sumber:
-                                    <code>ClipBufferLayananSampah204080160_4326.geojson</code>,
-                                    <code>BufferLayananSampah204080160_4326.geojson</code> &amp;
-                                    <code>TitikLayananSampah_4326.geojson</code>.<br>
-                                    Ketiga layer ini masing-masing punya satu tombol tampil/sembunyi sendiri, persis
-                                    seperti
-                                    titik
-                                    layanan.
-                                    Warna di dalam tiap layer buffer tetap mengikuti kelas radius aslinya (hanya sebagai
-                                    referensi,
-                                    bukan tombol terpisah).
-                                </p>-->
                             </div>
                         </div>
 
@@ -278,9 +259,6 @@
                                             class="bi bi-bank"></i></span>
                                     <label for="toggleRuangBudaya">Ruang Aktivitas Budaya</label>
                                 </div>
-                                <!-- <p class="legend-note">Sumber:
-                                    <code>TitikRuangBudayaBumijo_4326.geojson</code>.<br>
-                                    Setiap titik menampilkan isi field "Nama" dan "Keterangan" pada popup.</p> -->
                             </div>
                         </div>
 
@@ -324,9 +302,6 @@
                                             class="bi bi-bag-fill"></i></span>
                                     <label for="toggleBarangJasa">Barang &amp; Jasa</label>
                                 </div>
-                                <!-- <p class="legend-note">Sumber: <code>UMKMKuliner_4326.geojson</code> &amp;
-                                    <code>UMKMBarangJasa_4326.geojson</code>.
-                                </p> -->
                             </div>
                         </div>
 
@@ -373,9 +348,6 @@
                                         style="background: var(--orange); height:3px;"></span>
                                     <label for="toggleJalanGaris">Jalan (Garis)</label>
                                 </div>
-                                <!--<p class="legend-note">Sumber: <code>AdministrasiKelurahanBumijo4326.geojson</code>,
-                                    <code>JalanAreaBumijo4326.geojson</code>, <code>JalanGarisBumijo4326.geojson</code>.
-                                </p>-->
                             </div>
                         </div>
                     </div>
@@ -384,11 +356,6 @@
 
                 <div class="sidebar-panel" data-panel="statistik" id="panelStatistik">
                     <div class="sidebar-scroll">
-
-                        <!--<p class="stat-intro">Ringkasan data spasial Kelurahan Bumijo — dihitung otomatis dari layer
-                            yang
-                            sudah dimuat di peta.</p>-->
-
                         <div class="stat-section">
                             <div class="stat-section-title">
                                 <i class="bi bi-fire"></i>
@@ -420,11 +387,6 @@
                             </div>
                             <div class="stat-cards" id="statCardsUmkm"></div>
                         </div>
-
-                        <!-- <p class="legend-note">Angka di atas dihitung langsung dari jumlah data (fitur) pada file
-                            GeoJSON
-                            yang sudah dimuat masing-masing layer, dan diperbarui otomatis setiap panel ini dibuka.</p>-->
-
                     </div>
                 </div>
                 <!-- /panelStatistik -->

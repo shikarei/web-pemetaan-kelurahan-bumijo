@@ -28,7 +28,10 @@
             ).bindPopup(`
                 <div class="budaya-popup">
 
-                    <div class="popup-title">${nama}</div>
+                    <div class="popup-head">
+                        <span class="popup-badge" style="--marker-color: #8B5CF6;"><i class="bi bi-bank"></i></span>
+                        <div class="popup-title">${nama}</div>
+                    </div>
 
                     <hr>
 

@@ -32,7 +32,10 @@ async function loadUMKMLayer(filename, color, checkboxId, defaultLabel, statsKey
             ).bindPopup(`
                 <div class="umkm-popup">
 
-                    <div class="popup-title">${nama}</div>
+                    <div class="popup-head">
+                        <span class="popup-badge" style="--marker-color: ${color};"><i class="bi ${icon}"></i></span>
+                        <div class="popup-title">${nama}</div>
+                    </div>
 
                     <hr>
 

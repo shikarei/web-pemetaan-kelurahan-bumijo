@@ -6,6 +6,7 @@
 ========================================================================= */
 
 :root {
+    --black: #000000;
     --dark-purple: #280047;
     --purple: #430076;
     --purple-slightlydark: #35005e;
@@ -37,7 +38,7 @@ body {
     min-height: 100%;
     font-family: 'Work Sans', sans-serif;
     color: var(--white);
-    background: var(--purple-slightlydark);
+    background: var(--black);
 }
 
 h1,

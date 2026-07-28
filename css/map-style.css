@@ -168,6 +168,24 @@
         color: var(--peach);
         border-radius: 8px;
         border: 1px solid var(--line);
+        animation: popupPop 0.3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    /* Animasi "pop" saat popup dibuka. Sengaja ditaruh di
+       .leaflet-popup-content-wrapper (bukan di .leaflet-popup induknya),
+       karena Leaflet memakai transform pada .leaflet-popup untuk mengatur
+       posisi lewat JS — kalau dianimasikan di situ, transform posisinya
+       bisa keganggu. Wrapper ini aman disentuh untuk animasi visual. */
+    @keyframes popupPop {
+        from {
+            opacity: 0;
+            transform: scale(0.85);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
     .leaflet-popup-tip {
@@ -515,7 +533,6 @@
     .acc-group[data-accent="pale"] .acc-icon {
         background: var(--teal-pale);
     }
-
     .acc-group[data-accent="amber-light"] .acc-icon {
         background: var(--amber-light);
     }
@@ -772,6 +789,88 @@
     /* =====================================================
     POPUP UMKM
 ===================================================== */
+
+    /* =====================================================
+    POPUP HEAD — badge ikon berwarna + judul
+    Dipakai bareng oleh umkm-popup, service-popup, dan budaya-popup
+    supaya tampilan popup konsisten dengan warna marker-nya di peta
+    (warna dikirim lewat "--marker-color" persis seperti .bumijo-marker).
+===================================================== */
+
+    .popup-head {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 2px;
+    }
+
+    .popup-badge {
+        flex-shrink: 0;
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--marker-color, var(--teal));
+        color: #ffffff;
+        font-size: 12px;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        animation: popupBadgePop 0.4s cubic-bezier(.34, 1.56, .64, 1) 0.05s backwards;
+    }
+
+    @keyframes popupBadgePop {
+        from {
+            opacity: 0;
+            transform: scale(0.4) rotate(-25deg);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
+
+    /* Baris info (popup-item) tampil satu-satu dengan jeda singkat,
+       dan sedikit menyala + geser saat kursor di atasnya. */
+    .popup-item {
+        border-radius: 6px;
+        opacity: 0;
+        animation: popupRowRise 0.35s ease forwards;
+        animation-delay: 0.14s;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .popup-item:hover {
+        background: rgba(255, 236, 209, 0.08);
+        transform: translateX(3px);
+    }
+
+    @keyframes popupRowRise {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .umkm-popup .popup-item:nth-child(4) {
+        animation-delay: 0.20s;
+    }
+
+    .umkm-popup .popup-item:nth-child(5) {
+        animation-delay: 0.26s;
+    }
+
+    .umkm-popup .popup-item:nth-child(6) {
+        animation-delay: 0.32s;
+    }
+
 
     .umkm-popup {
         min-width: 220px;

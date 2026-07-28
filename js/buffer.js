@@ -149,8 +149,9 @@ loadBufferLayer(
             ).bindPopup(`
                 <div class="service-popup">
 
-                    <div class="popup-title">
-                        ${layanan}
+                    <div class="popup-head">
+                        <span class="popup-badge" style="--marker-color: #10B981;"><i class="bi bi-recycle"></i></span>
+                        <div class="popup-title">${layanan}</div>
                     </div>
 
                     <hr>
