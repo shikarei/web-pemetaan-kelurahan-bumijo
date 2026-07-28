@@ -123,7 +123,7 @@ function renderStatistikDashboard() {
     if (elKernel) {
         elKernel.innerHTML =
             statCardHTML('bi-geo-alt-fill', kernel.titikSampah, 'Titik Penumpukan Sampah') +
-            statCardHTML('bi-diagram-3-fill', kernel.kelasPrioritas, 'Kelas Prioritas');
+            statCardHTML('bi-diagram-3-fill', kernel.kelasPrioritas, 'Kelas Prioritas Penanganan Sampah');
     }
 
     const buffer = s.buffer || {};
