@@ -94,7 +94,7 @@ loadBufferLayer(
     'bufferLoadingNote',
     {
         weight: 1,
-        fillOpacity: 0.4
+        fillOpacity: 0.5
     },
     true,
     'clip'
