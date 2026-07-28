@@ -64,7 +64,8 @@ document.getElementById('sidebarClose').addEventListener('click', () => {
 
 document.querySelectorAll('.acc-header').forEach(header => {
     header.addEventListener('click', () => {
-        header.parentElement.classList.toggle('open');
+        const accGroup = header.closest('.acc-group');
+        if (accGroup) accGroup.classList.toggle('open');
     });
 });
 
@@ -137,7 +138,7 @@ function renderStatistikDashboard() {
     const elBudaya = document.getElementById('statCardsBudaya');
     if (elBudaya) {
         elBudaya.innerHTML =
-            statCardHTML('bi-building', budaya.total, 'Total Objek Budaya');
+            statCardHTML('bi-building', budaya.total, 'Total Objek Ruang Aktivitas Budaya');
     }
 
     const umkm = s.umkm || {};
