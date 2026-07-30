@@ -99,7 +99,7 @@ button {
     font-size: 0.82rem;
     padding: 0.55rem 1rem;
     border-radius: 999px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s cubic-bezier(.22, 1, .36, 1), box-shadow 0.2s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-back-btn:hover {
@@ -187,7 +187,7 @@ button {
 .pl-hero p {
     font-size: 0.95rem;
     line-height: 1.65;
-    color: rgba(255, 236, 209, 0.72);
+    color: rgba(255, 236, 209, 0.84);
     margin: 0;
 }
 
@@ -224,7 +224,7 @@ button {
 .pl-section-head p {
     margin: 0;
     font-size: 0.84rem;
-    color: rgba(255, 236, 209, 0.55);
+    color: rgba(255, 236, 209, 0.72);
 }
 
 /* =====================================================
@@ -241,13 +241,13 @@ button {
 .pl-filter-btn {
     border: 1px solid var(--line);
     background: var(--purple);
-    color: rgba(255, 236, 209, 0.75);
+    color: rgba(255, 236, 209, 0.87);
     font-size: 0.8rem;
     font-weight: 600;
     padding: 0.45rem 1rem;
     border-radius: 999px;
-    transition: transform 0.2s ease, background 0.25s ease, color 0.25s ease,
-        border-color 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.2s cubic-bezier(.22, 1, .36, 1), background 0.25s cubic-bezier(.22, 1, .36, 1), color 0.25s cubic-bezier(.22, 1, .36, 1),
+        border-color 0.25s cubic-bezier(.22, 1, .36, 1), box-shadow 0.25s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-filter-btn:hover {
@@ -290,7 +290,7 @@ button {
     transform: translateY(10px);
     animation: plCardRise 0.5s ease forwards;
     animation-delay: calc(var(--i, 0) * 0.08s);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s cubic-bezier(.22, 1, .36, 1), box-shadow 0.3s cubic-bezier(.22, 1, .36, 1), border-color 0.3s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-card::before {
@@ -303,7 +303,7 @@ button {
     background: linear-gradient(90deg, var(--teal-light), var(--amber-light));
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.35s ease;
+    transition: transform 0.35s cubic-bezier(.22, 1, .36, 1);
     z-index: 2;
 }
 
@@ -335,7 +335,7 @@ button {
     object-fit: cover;
     background: var(--dark-purple);
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-card:hover .pl-card-photo {
@@ -360,7 +360,7 @@ button {
     background: var(--amber-light);
     padding: 0.2rem 0.55rem;
     border-radius: 999px;
-    transition: background 0.25s ease, transform 0.25s ease;
+    transition: background 0.25s cubic-bezier(.22, 1, .36, 1), transform 0.25s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-card:hover .pl-card-category {
@@ -378,7 +378,7 @@ button {
 .pl-card-summary {
     font-size: 0.82rem;
     line-height: 1.55;
-    color: rgba(255, 236, 209, 0.68);
+    color: rgba(255, 236, 209, 0.8);
     margin: 0;
     flex: 1;
 }
@@ -396,7 +396,7 @@ button {
     font-weight: 600;
     padding: 0.45rem 0.9rem;
     border-radius: 999px;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s cubic-bezier(.22, 1, .36, 1), color 0.2s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-card-more:hover {
@@ -406,7 +406,7 @@ button {
 }
 
 .pl-card-more i {
-    transition: transform 0.25s ease;
+    transition: transform 0.25s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-card-more:hover i {
@@ -421,7 +421,7 @@ button {
     grid-column: 1 / -1;
     text-align: center;
     padding: 2.4rem 1rem;
-    color: rgba(255, 236, 209, 0.55);
+    color: rgba(255, 236, 209, 0.72);
     opacity: 0;
     animation: plCardRise 0.4s ease forwards;
 }
@@ -445,7 +445,7 @@ button {
 .pl-foot {
     text-align: center;
     font-size: 0.7rem;
-    color: rgba(255, 236, 209, 0.4);
+    color: rgba(255, 236, 209, 0.62);
     padding: 1.4rem;
     border-top: 1px solid var(--line);
 }
@@ -464,7 +464,7 @@ button {
     padding: 1.2rem;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.25s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-modal.open {
@@ -513,7 +513,7 @@ button {
     align-items: center;
     justify-content: center;
     font-size: 0.75rem;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: background 0.2s cubic-bezier(.22, 1, .36, 1), transform 0.2s cubic-bezier(.22, 1, .36, 1);
 }
 
 .pl-modal-close:hover {
@@ -554,7 +554,7 @@ button {
 .pl-modal-content p {
     font-size: 0.86rem;
     line-height: 1.7;
-    color: rgba(255, 236, 209, 0.75);
+    color: rgba(255, 236, 209, 0.87);
     margin: 0;
     white-space: pre-line;
 }

@@ -11,7 +11,7 @@
 ------------------------------------------------------------------------- */
 (async function () {
 
-    const gj = await loadGeoJSON('AdministrasiKelurahanBumijo4326.geojson');
+    const gj = await loadGeoJSON('AdministrasiKelurahanBumijo4326_V2.geojson');
     if (!gj) return;
 
     // Simpan sebagai variabel global agar bisa dipakai Home Button
