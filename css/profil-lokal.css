@@ -108,6 +108,58 @@ button {
 }
 
 /* =====================================================
+    TOPBAR ACTIONS — wrapper menyatukan language switch
+    dan tombol kembali di sisi kanan navbar
+===================================================== */
+
+.pl-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.pl-lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--purple);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.28rem 0.45rem;
+}
+
+.pl-lang-btn {
+    border: none;
+    background: transparent;
+    color: rgba(255, 236, 209, 0.6);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.32rem 0.6rem;
+    border-radius: 999px;
+    transition: background 0.25s cubic-bezier(.22, 1, .36, 1), color 0.25s cubic-bezier(.22, 1, .36, 1), transform 0.2s cubic-bezier(.22, 1, .36, 1);
+}
+
+.pl-lang-btn:hover {
+    color: var(--white);
+}
+
+.pl-lang-btn:active {
+    transform: scale(0.94);
+}
+
+.pl-lang-btn.active {
+    background: var(--spearmint);
+    color: var(--dark-purple);
+    box-shadow: 0 4px 12px rgba(0, 255, 179, 0.3);
+}
+
+.pl-lang-divider {
+    color: rgba(255, 236, 209, 0.3);
+    font-size: 0.7rem;
+}
+
+/* =====================================================
     MAIN / HERO
 ===================================================== */
 
@@ -589,8 +641,17 @@ button {
         padding: 0 0.9rem;
     }
 
+    .pl-topbar-actions {
+        gap: 0.5rem;
+    }
+
     .pl-back-btn span {
         display: none;
+    }
+
+    .pl-lang-btn {
+        font-size: 0.68rem;
+        padding: 0.28rem 0.5rem;
     }
 
     .pl-card-grid {

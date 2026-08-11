@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Profil Lokal — WebGIS Kelurahan Bumijo</title>
+    <title data-i18n="pageTitle">Profil Lokal — WebGIS Kelurahan Bumijo</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,21 +27,30 @@
     <header class="pl-topbar">
         <div class="pl-brand">
             <span class="pl-display">BUMIJO</span>
-            <small>WebGIS &middot; KKN Juli 2026</small>
+            <small data-i18n="brandTag">WebGIS &middot; KKN Juli 2026</small>
         </div>
 
-        <a href="map.html" class="pl-back-btn">
-            <i class="bi bi-arrow-left"></i>
-            <span>Kembali ke WebGIS</span>
-        </a>
+        <div class="pl-topbar-actions">
+            <div class="pl-lang-switch" role="group" aria-label="Ganti bahasa / Switch language">
+                <button type="button" class="pl-lang-btn active" data-lang="id" aria-pressed="true">ID</button>
+                <span class="pl-lang-divider" aria-hidden="true">|</span>
+                <button type="button" class="pl-lang-btn" data-lang="en" aria-pressed="false">EN</button>
+            </div>
+
+            <a href="map.html" class="pl-back-btn">
+                <i class="bi bi-arrow-left"></i>
+                <span data-i18n="backBtn">Kembali ke WebGIS</span>
+            </a>
+        </div>
     </header>
 
     <main class="pl-main">
 
         <section class="pl-hero">
-            <span class="pl-hero-badge"><i class="bi bi-mic-fill"></i> Hasil Wawancara Lapangan</span>
-            <h1>Profil Lokal Kelurahan Bumijo</h1>
-            <p>
+            <span class="pl-hero-badge"><i class="bi bi-mic-fill"></i> <span
+                    data-i18n="heroBadge">Hasil Wawancara Lapangan</span></span>
+            <h1 data-i18n="heroTitle">Profil Lokal Kelurahan Bumijo</h1>
+            <p data-i18n="heroDesc">
                 Kumpulan profil UMKM dan objek budaya hasil wawancara langsung bersama warga Kelurahan Bumijo,
                 disusun melalui kolaborasi dengan tim Sastra Inggris KKN Juli 2026. Halaman ini melengkapi WebGIS
                 dengan cerita dan konteks di balik data spasial yang sudah dipetakan.
@@ -50,8 +59,9 @@
 
         <section class="pl-section" id="sectionUmkm">
             <div class="pl-section-head">
-                <h2><i class="bi bi-shop"></i> Profil UMKM</h2>
-                <p>Cerita dan profil pelaku usaha kuliner, barang, dan jasa di Kelurahan Bumijo.</p>
+                <h2><i class="bi bi-shop"></i> <span data-i18n="umkmTitle">Profil UMKM</span></h2>
+                <p data-i18n="umkmDesc">Cerita dan profil pelaku usaha kuliner, barang, dan jasa di Kelurahan Bumijo.
+                </p>
             </div>
             <div class="pl-card-grid" id="umkmCardGrid">
                 <!-- Card UMKM dirender otomatis oleh js/profil-lokal.js -->
@@ -60,8 +70,8 @@
 
         <section class="pl-section" id="sectionBudaya">
             <div class="pl-section-head">
-                <h2><i class="bi bi-building"></i> Profil Budaya</h2>
-                <p>Ruang, tradisi, dan objek budaya bernilai sejarah di Kelurahan Bumijo.</p>
+                <h2><i class="bi bi-building"></i> <span data-i18n="budayaTitle">Profil Budaya</span></h2>
+                <p data-i18n="budayaDesc">Ruang, tradisi, dan objek budaya bernilai sejarah di Kelurahan Bumijo.</p>
             </div>
             <div class="pl-card-grid" id="budayaCardGrid">
                 <!-- Card Budaya dirender otomatis oleh js/profil-lokal.js -->
@@ -70,7 +80,7 @@
 
     </main>
 
-    <footer class="pl-foot">
+    <footer class="pl-foot" data-i18n="footer">
         WebGIS Kelurahan Bumijo &middot; Kemantren Jetis, Kota Yogyakarta &middot; KKN Juli 2026 &middot; Data profil
         merupakan placeholder sementara sebelum digantikan hasil wawancara final.
     </footer>
